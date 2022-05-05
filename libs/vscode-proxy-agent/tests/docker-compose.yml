@@ -1,0 +1,61 @@
+version: '3.3'
+
+services:
+    test-direct-client:
+        image: node:14
+        links:
+            - test-https-server
+        volumes:
+            - ..:/repo
+        networks:
+            - test-servers
+        working_dir: /repo/tests/test-client
+        environment:
+            - MOCHA_TESTS=src/direct.test.ts src/tls.test.ts
+        command: npm run test:watch
+    test-proxy-client:
+        image: node:14
+        links:
+            - test-http-proxy
+        volumes:
+            - ..:/repo
+        networks:
+            - test-proxies
+        working_dir: /repo/tests/test-client
+        environment:
+            - MOCHA_TESTS=src/proxy.test.ts
+        command: npm run test:watch
+    test-http-proxy:
+        image: minimum2scp/squid:latest
+        links:
+            - test-https-server
+        networks:
+            - test-proxies
+            - test-proxies-and-servers
+        ports:
+            - 3128
+    test-http-auth-proxy:
+        image: test-http-auth-proxy:latest
+        build: test-http-auth-proxy
+        links:
+            - test-https-server
+        networks:
+            - test-proxies
+            - test-proxies-and-servers
+        ports:
+            - 3128
+    test-https-server:
+        image: test-https-server:latest
+        build: test-https-server
+        volumes:
+            - ./test-https-server:/etc/nginx
+        networks:
+            - test-servers
+            - test-proxies-and-servers
+        ports:
+            - 443
+
+networks:
+    test-proxies: {}
+    test-proxies-and-servers: {}
+    test-servers: {}

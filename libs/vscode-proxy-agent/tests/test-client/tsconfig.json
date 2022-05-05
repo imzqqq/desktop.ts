@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2015",
+		"esModuleInterop": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"lib": [
+			"esnext"
+		]
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
