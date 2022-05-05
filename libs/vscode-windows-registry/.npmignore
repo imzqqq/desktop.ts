@@ -1,0 +1,11 @@
+/.vscode
+/lib
+/build
+.gitignore
+.npmignore
+npm-debug.log
+yarn-error.log
+tsconfig.json
+yarn.lock
+/test
+/.github
