@@ -1,0 +1,15 @@
+.DS_Store
+node_modules
+build
+src/telemetry-sources
+src/tests
+out/tests
+yarn.lock
+.vscode/settings.json
+*.json
+.vscode
+.nycrc
+.devcontainer
+coverage
+!package*.json
+!tsconfig.json
