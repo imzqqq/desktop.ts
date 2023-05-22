@@ -144,8 +144,7 @@ export class HTMLFileSystemProvider implements IFileSystemProviderWithFileReadWr
 
 				// Entire file
 				else {
-					// TODO@electron: duplicate type definitions originate from `@types/node/stream/consumers.d.ts`
-					const reader: ReadableStreamDefaultReader<Uint8Array> = (file.stream() as unknown as ReadableStream<Uint8Array>).getReader();
+					const reader: ReadableStreamDefaultReader<Uint8Array> = file.stream().getReader();
 
 					let res = await reader.read();
 					while (!res.done) {
@@ -265,7 +264,7 @@ export class HTMLFileSystemProvider implements IFileSystemProviderWithFileReadWr
 			}
 
 			// Implement file rename by write + delete
-			let fileHandle = await this.getFileHandle(from);
+			const fileHandle = await this.getFileHandle(from);
 			if (fileHandle) {
 				const file = await fileHandle.getFile();
 				const contents = new Uint8Array(await file.arrayBuffer());

@@ -16,6 +16,7 @@ import { TokenClassificationExtensionPoints } from 'vs/workbench/services/themes
 import { LanguageConfigurationFileHandler } from 'vs/workbench/contrib/codeEditor/browser/languageConfigurationExtensionPoint';
 
 // --- mainThread participants
+import './mainThreadLocalization';
 import './mainThreadBulkEdits';
 import './mainThreadCodeInsets';
 import './mainThreadCLICommands';
@@ -42,11 +43,14 @@ import './mainThreadLanguageFeatures';
 import './mainThreadLanguages';
 import './mainThreadLogService';
 import './mainThreadMessageService';
+import './mainThreadManagedSockets';
 import './mainThreadOutputService';
 import './mainThreadProgress';
+import './mainThreadQuickDiff';
 import './mainThreadQuickOpen';
 import './mainThreadRemoteConnectionData';
 import './mainThreadSaveParticipant';
+import './mainThreadEditSessionIdentityParticipant';
 import './mainThreadSCM';
 import './mainThreadSearch';
 import './mainThreadStatusBar';
@@ -64,10 +68,12 @@ import './mainThreadWorkspace';
 import './mainThreadComments';
 import './mainThreadNotebook';
 import './mainThreadNotebookKernels';
-import './mainThreadNotebookProxyKernels';
 import './mainThreadNotebookDocumentsAndEditors';
 import './mainThreadNotebookRenderers';
+import './mainThreadNotebookSaveParticipant';
 import './mainThreadInteractive';
+import './mainThreadInteractiveEditor';
+import './mainThreadChat';
 import './mainThreadTask';
 import './mainThreadLabelService';
 import './mainThreadTunnelService';
@@ -75,6 +81,9 @@ import './mainThreadAuthentication';
 import './mainThreadTimeline';
 import './mainThreadTesting';
 import './mainThreadSecretState';
+import './mainThreadProfilContentHandlers';
+import './mainThreadSemanticSimilarity';
+import './mainThreadIssueReporter';
 
 export class ExtensionPoints implements IWorkbenchContribution {
 
